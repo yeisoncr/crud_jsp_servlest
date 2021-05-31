@@ -25,6 +25,7 @@ public class UsuarioDaoPosgretSQL implements UsuarioDAO{
 	
 	public UsuarioDaoPosgretSQL() {
 		this.conexion = ConexionPosgresSQL.getConexion();
+		
 	}
 	
 

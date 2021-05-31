@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.empresa.crud.dao.UsuarioDAO;
+import co.empresa.crud.dao.UsuarioDaoFactory;
 import co.empresa.crud.dao.UsuarioDaoMySQL;
 import co.empresa.crud.dao.UsuarioDaoPosgretSQL;
 import co.empresa.crud.modelo.Usuario;
@@ -38,9 +39,10 @@ public class UsuarioServlet extends HttpServlet {
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
-	public void init(ServletConfig config) throws ServletException {
+	public void init() throws ServletException {
 		// TODO Auto-generated method stub
-		this.usuarioDao = new UsuarioDaoPosgretSQL();
+		String type = getServletContext().getInitParameter("type");
+		this.usuarioDao = UsuarioDaoFactory.getUsuarioDao(type);
 	}
 
 	/**

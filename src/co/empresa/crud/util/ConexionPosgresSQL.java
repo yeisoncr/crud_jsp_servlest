@@ -1,24 +1,22 @@
 package co.empresa.crud.util;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.Connection;
-
 public class ConexionPosgresSQL {
-	
 	private Connection con = null;
-	private static ConexionPosgresSQL db;
-	private java.sql.PreparedStatement preparedStatement;
+	private static ConexionPosgresSQL  db;
+	private PreparedStatement preparedStatement;
 
 	private static final String url = "jdbc:postgresql://localhost:5432/";
 	private static final String dbName = "sistema";
-	private static final String driver = "com.postgresql.Driver";
-	private static final String userName = "root";
+	private static final String driver = "org.postgresql.Driver";
+	private static final String userName = "postgres";
 	private static final String password = "yeison";
-	
-	
+
 	public ConexionPosgresSQL() {
 		try {
 			Class.forName(driver).newInstance();
@@ -49,7 +47,7 @@ public class ConexionPosgresSQL {
 		}
 	}
 
-	public static ConexionPosgresSQL getConexion() {
+	public static ConexionPosgresSQL  getConexion() {
 		if (db == null)
 			db = new ConexionPosgresSQL();
 		return db;
@@ -72,10 +70,8 @@ public class ConexionPosgresSQL {
 		return this.con;
 	}
 
-	public java.sql.PreparedStatement setPreparedStatement(String sql) throws SQLException {
+	public PreparedStatement setPreparedStatement(String sql) throws SQLException {
 		this.preparedStatement = con.prepareStatement(sql);
 		return this.preparedStatement;
 	}
-
-
 }
