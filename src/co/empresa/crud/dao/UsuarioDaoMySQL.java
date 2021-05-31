@@ -1,25 +1,29 @@
 package co.empresa.crud.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.PreparedStatement;
+
 import java.util.*;
 
 import co.empresa.crud.modelo.Usuario;
-import co.empresa.crud.util.Conexion;
+import co.empresa.crud.util.ConexionMySQL;
 
-public class UsuarioDao {
+public class UsuarioDaoMySQL implements UsuarioDAO {
 	
-	private Conexion conexion; 
+	private ConexionMySQL conexion; 
 	private static final String INSERT_USUARIO_SQL = "INSERT INTO usuario (nombre, email, pais) VALUES (?,?,?);";
 	private static final String DELETE_USUARIO_SQL = "DELETE FROM usuario WHERE id = ? ;";
 	private static final String UPDATE_USUARIO_SQL = "UPDATE  usuario SET  nombre = ?, email = ?, pais = ? WHERE id = ?;";
 	private static final String SELECT_USUARIO_BY_ID = "SELECT * FROM usuario WHERE id = ?;";
 	private static final String SELECT_ALL_USUARIOS = "SELECT * FROM usuario;";
-	public UsuarioDao() {
+	
+	
+	
+	public UsuarioDaoMySQL() {
 		super();
-		this.conexion = Conexion.getConexion();
+		this.conexion = ConexionMySQL.getConexion();
 	}
 	
 	

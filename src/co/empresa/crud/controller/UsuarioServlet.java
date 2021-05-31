@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-import co.empresa.crud.dao.UsuarioDao;
+import co.empresa.crud.dao.UsuarioDAO;
+import co.empresa.crud.dao.UsuarioDaoMySQL;
+import co.empresa.crud.dao.UsuarioDaoPosgretSQL;
 import co.empresa.crud.modelo.Usuario;
 
 /**
@@ -25,7 +25,7 @@ public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	
-	private UsuarioDao usuarioDao;
+	private UsuarioDAO usuarioDao;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,7 +40,7 @@ public class UsuarioServlet extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		this.usuarioDao = new UsuarioDao();
+		this.usuarioDao = new UsuarioDaoPosgretSQL();
 	}
 
 	/**
